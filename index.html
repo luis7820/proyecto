@@ -595,7 +595,7 @@
     function toggleContrast() {
         document.body.classList.toggle('hc');
         const on = document.body.classList.contains('hc');
-        showToast(on ? '🌓 Alto contraste activado' : '☀️ Contraste normal');
+        showToast(on ? ' Alto contraste activado' : ' Contraste normal');
         speakText(on ? 'Modo alto contraste activado' : 'Modo estándar activado');
     }
 
@@ -625,7 +625,7 @@
     function startVoiceRecognition() {
         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
         if (!SR) {
-            showToast('⚠️ Tu navegador no soporta voz. Usa Chrome.');
+            showToast(' Tu navegador no soporta voz. Usa Chrome.');
             return;
         }
         const recognition = new SR();
