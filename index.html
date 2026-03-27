@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccesoUniversal - Portal de Accesibilidad</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<div id="aria-live" aria-live="polite" aria-atomic="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;"></div>
+
+<a href="#main-content" class="skip-link" style="position: absolute; top: -100px; left: 16px; background: #2563eb; color: #fff; padding: 10px 20px; border-radius: 6px; font-weight: 700; z-index: 9999; transition: top 0.2s;">Saltar al contenido principal</a>
+
+<nav class="navbar" aria-label="Herramientas de accesibilidad">
+    <div class="navbar-inner">
+        <div class="navbar-brand">
+            <span aria-hidden="true">♿</span> AccesoUniversal
+        </div>
+        <div class="toolbar" role="toolbar" aria-label="Opciones de accesibilidad">
+            <button class="btn btn-gray" onclick="toggleContrast()" aria-label="Alternar alto contraste (Alt+C)">
+                🌓 Contraste
+            </button>
+            <button class="btn btn-gray" onclick="changeFontSize(2)" aria-label="Aumentar tamaño de letra (Alt++)">
+                A+
+            </button>
+            <button class="btn btn-gray" onclick="changeFontSize(-2)" aria-label="Reducir tamaño de letra (Alt+-)">
+                A-
+            </button>
+            <button class="btn btn-gray" onclick="resetFontSize()" aria-label="Restablecer tamaño de letra">
+                A↺
+            </button>
+            <button id="voice-btn" class="btn btn-voice" onclick="startVoiceRecognition()" aria-label="Activar reconocimiento de voz (Alt+V)">
+                🎤 <span id="voice-status">Comando de voz</span>
+            </button>
+            <button class="btn btn-red" onclick="stopAllSpeech()" aria-label="Detener audio (Escape)">
+                ⏹ Detener
+            </button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero" role="banner">
+    <h1>Portal de Accesibilidad Universal</h1>
+    <p>Diseñado para que todas las personas, con o sin discapacidad, puedan acceder a la información y comunicarse sin barreras.</p>
+    <div class="hero-badges" aria-label="Tipos de accesibilidad incluidos">
+        <span class="badge">👁 Discapacidad visual</span>
+        <span class="badge">👂 Discapacidad auditiva</span>
+        <span class="badge">🤝 Comunicación no verbal</span>
+        <span class="badge">⌨ Navegación por teclado</span>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section aria-labelledby="titulo-visual">
+        <h2 id="titulo-visual" class="section-title">
+            <span class="dot" style="background:#2563eb" aria-hidden="true"></span>
+            Soporte para Discapacidad Visual
+        </h2>
+        <div class="card-grid">
+            <div class="card card-blue">
+                <h3 style="font-weight:700; margin-bottom:10px;">Lectores de pantalla</h3>
+                <p>Esta página usa etiquetas <strong>ARIA</strong> avanzadas, compatible con NVDA, JAWS y VoiceOver. Todas las imágenes tienen texto alternativo descriptivo.</p>
+                <button class="read-aloud-btn" onclick="speakText('Esta página usa etiquetas ARIA avanzadas y es compatible con los principales lectores de pantalla como NVDA, JAWS y VoiceOver. Todas las imágenes tienen texto alternativo descriptivo.')">
+                    🔊 Escuchar esta sección
+                </button>
+            </div>
+            <div class="card card-blue">
+                <h3 style="font-weight:700; margin-bottom:10px;">Opciones visuales</h3>
+                <ul>
+                    <li>Alto contraste activable desde la barra superior</li>
+                    <li>Tamaño de fuente ajustable (A+ / A-)</li>
+                    <li>Foco visible con borde azul en todos los elementos interactivos</li>
+                    <li>Estructura de encabezados clara y ordenada</li>
+                </ul>
+                <button class="read-aloud-btn" onclick="speakText('Opciones visuales disponibles: alto contraste, tamaño de fuente ajustable, foco visible y estructura de encabezados clara.')">
+                    🔊 Escuchar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section aria-labelledby="titulo-auditiva">
+        <h2 id="titulo-auditiva" class="section-title">
+            <span class="dot" style="background:#16a34a" aria-hidden="true"></span>
+            Soporte para Discapacidad Auditiva
+        </h2>
+        <div class="card-grid">
+            <div class="card card-green">
+                <h3 style="font-weight:700; margin-bottom:10px;">Contenido multimedia</h3>
+                <p>Todo el contenido de vídeo incluye <strong>subtítulos descriptivos</strong> y transcripciones completas descargables. Las alertas del sistema son siempre visuales, nunca solo sonoras.</p>
+                <div style="margin-top:14px; background:#f0fdf4; border-radius:8px; padding:14px; border:1px solid #bbf7d0; font-style:italic; color:#15803d; font-size:0.9rem;">
+                    [Ejemplo: vídeo con intérprete de lengua de signos en esquina y subtítulos de alta visibilidad]
+                </div>
+            </div>
+            <div class="card card-green">
+                <h3 style="font-weight:700; margin-bottom:10px;">Diseño sin barreras auditivas</h3>
+                <ul>
+                    <li>Iconografía intuitiva para cada acción</li>
+                    <li>Alertas visuales con color y animación</li>
+                    <li>Lenguaje sencillo (lectura fácil)</li>
+                    <li>Sin información transmitida solo por sonido</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section aria-labelledby="titulo-comunicacion">
+        <h2 id="titulo-comunicacion" class="section-title">
+            <span class="dot" style="background:#7c3aed" aria-hidden="true"></span>
+            Comunicación No Verbal — Pictogramas
+        </h2>
+        <div class="card card-purple">
+            <p style="margin-bottom:20px;">Para personas con dificultades en el habla, pulsa cualquier pictograma para que el sistema lo anuncie en voz alta y muestre una notificación visual.</p>
+            <div class="picto-grid" role="group" aria-label="Panel de pictogramas de acción rápida">
+                <button class="picto-btn" onclick="pictoAnnounce('Necesito ayuda')" aria-label="Necesito ayuda">
+                    <span class="emoji" aria-hidden="true">🙋</span>
+                    <span>Ayuda</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('Quiero información')" aria-label="Quiero información">
+                    <span class="emoji" aria-hidden="true">ℹ️</span>
+                    <span>Información</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('Quiero ir al baño')" aria-label="Quiero ir al baño">
+                    <span class="emoji" aria-hidden="true">🚻</span>
+                    <span>Baño</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('Tengo hambre o sed')" aria-label="Tengo hambre o sed">
+                    <span class="emoji" aria-hidden="true">🍽️</span>
+                    <span>Comer/Beber</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('No entiendo, repite por favor')" aria-label="No entiendo">
+                    <span class="emoji" aria-hidden="true">❓</span>
+                    <span>No entiendo</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('Estoy de acuerdo')" aria-label="Sí, de acuerdo">
+                    <span class="emoji" aria-hidden="true">✅</span>
+                    <span>Sí</span>
+                </button>
+                <button class="picto-btn" onclick="pictoAnnounce('No estoy de acuerdo')" aria-label="No">
+                    <span class="emoji" aria-hidden="true">❌</span>
+                    <span>No</span>
+                </button>
+                <button class="picto-btn emergency" onclick="pictoAnnounce('Tengo una emergencia, necesito ayuda urgente')" aria-label="Emergencia">
+                    <span class="emoji" aria-hidden="true">🚨</span>
+                    <span>Emergencia</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section aria-labelledby="titulo-voz">
+        <h2 id="titulo-voz" class="section-title">
+            <span class="dot" style="background:#0ea5e9" aria-hidden="true"></span>
+            Comandos de Voz Disponibles
+        </h2>
+        <div class="card" style="border-left:5px solid #0ea5e9;">
+            <p>Pulsa el botón <strong>"Comando de voz"</strong> en la barra superior y di uno de estos comandos:</p>
+            <div class="commands-list" role="list" aria-label="Lista de comandos de voz">
+                <div class="command-tag" role="listitem">Di <code>"contraste"</code> → activa alto contraste</div>
+                <div class="command-tag" role="listitem">Di <code>"más grande"</code> → aumenta la letra</div>
+                <div class="command-tag" role="listitem">Di <code>"más pequeño"</code> → reduce la letra</div>
+                <div class="command-tag" role="listitem">Di <code>"ayuda"</code> → anuncia menú de ayuda</div>
+                <div class="command-tag" role="listitem">Di <code>"detener"</code> → para el audio</div>
+                <div class="command-tag" role="listitem">Di <code>"inicio"</code> → vuelve arriba</div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-labelledby="titulo-teclado">
+        <h2 id="titulo-teclado" class="section-title">
+            <span class="dot" style="background:#f59e0b" aria-hidden="true"></span>
+            Navegación por Teclado
+        </h2>
+        <div class="card" style="border-left:5px solid #f59e0b;">
+            <p style="margin-bottom:4px;">Puedes controlar toda la página sin ratón:</p>
+            <div class="shortcuts-grid" role="list" aria-label="Atajos de teclado">
+                <div class="shortcut-item" role="listitem"><kbd>Tab</kbd> Siguiente elemento</div>
+                <div class="shortcut-item" role="listitem"><kbd>Shift+Tab</kbd> Elemento anterior</div>
+                <div class="shortcut-item" role="listitem"><kbd>Enter</kbd> Activar botón</div>
+                <div class="shortcut-item" role="listitem"><kbd>Esc</kbd> Detener audio</div>
+                <div class="shortcut-item" role="listitem"><kbd>Alt+C</kbd> Alto contraste</div>
+                <div class="shortcut-item" role="listitem"><kbd>Alt+V</kbd> Comando de voz</div>
+                <div class="shortcut-item" role="listitem"><kbd>Alt++</kbd> Letra más grande</div>
+                <div class="shortcut-item" role="listitem"><kbd>Alt+-</kbd> Letra más pequeña</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer role="contentinfo">
+    <p><strong>AccesoUniversal</strong> · Diseñado para la inclusión total · Compatible con NVDA, JAWS, VoiceOver y periféricos de asistencia</p>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
